@@ -1,5 +1,5 @@
 def normalize_text(text: str) -> str:
-  text = text.strip()
+  text = str(text).strip()
   text = text.lower()
 
   return text
@@ -7,20 +7,15 @@ def normalize_text(text: str) -> str:
 
 def score_answer(model_answer, ideal):
   model_answer = normalize_text(model_answer)
-  score = 0.0
 
   if isinstance(ideal, list):
     for ans in ideal:
-      ans = normalize_text(ans)
+      if model_answer == normalize_text(ans):
+        return 1.0
 
-      if model_answer == ans:
-        score = 1.0
-        break
+    return 0.0
 
-  else:
-    ideal = normalize_text(ideal)
+  if model_answer == normalize_text(ideal):
+    return 1.0
 
-    if ideal == model_answer:
-      score = 1.0
-
-  return score
+  return 0.0

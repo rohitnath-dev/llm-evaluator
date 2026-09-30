@@ -14,3 +14,10 @@ class EvaluationResult:
   sample_id: str
   model_answer: str
   score: float
+
+
+@dataclass
+class EvaluationReport:
+  total_samples: int
+  average_score: float
+  results: list[EvaluationResult]

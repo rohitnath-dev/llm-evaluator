@@ -1,0 +1,6 @@
+
+[hf]
+transformers>=4.40
+
+[test]
+pytest>=8.0
