@@ -25,6 +25,12 @@ test = [
 where = ["src"]
 
 
+[tool.setuptools.package-data]
+llm_evaluator = [
+  "data/*.jsonl"
+]
+
+
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]

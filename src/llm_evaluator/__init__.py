@@ -18,6 +18,8 @@ from .runner import (
 from .scorer import score_answer
 from .data_loader import load_dataset
 
+from .data_loader import load_dataset, load_builtin_dataset
+
 
 __all__ = [
   "EvaluationSample",
@@ -29,5 +31,6 @@ __all__ = [
   "run_model",
   "HuggingFaceModel",
   "score_answer",
-  "load_dataset"
+  "load_dataset",
+  "load_builtin_dataset"
 ]
