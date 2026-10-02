@@ -5,11 +5,20 @@ from .scorer import score_answer
 
 def evaluate_sample(
   model: Model,
+  judge_model: Model,
   sample: EvaluationSample
 ) -> EvaluationResult:
 
   model_answer = run_model(model, sample.input)
-  score = score_answer(model_answer, sample.ideal)
+
+  question = sample.input[-1]["content"]
+
+  score = score_answer(
+    judge_model,
+    question,
+    model_answer,
+    sample.ideal
+  )
 
   return EvaluationResult(
     sample_id=sample.id,
@@ -20,13 +29,19 @@ def evaluate_sample(
 
 def evaluate_samples(
   model: Model,
+  judge_model: Model,
   samples: list[EvaluationSample]
 ) -> EvaluationReport:
 
   results = []
 
   for sample in samples:
-    result = evaluate_sample(model, sample)
+    result = evaluate_sample(
+      model,
+      judge_model,
+      sample
+    )
+
     results.append(result)
 
   average_score = (

@@ -16,6 +16,7 @@ from .runner import (
 )
 
 from .scorer import score_answer
+from .judge import judge_answer
 
 from .data_loader import (
     load_dataset,
@@ -33,6 +34,7 @@ __all__ = [
     "run_model",
     "HuggingFaceModel",
     "score_answer",
+    "judge_answer",
     "load_dataset",
     "load_builtin_dataset"
 ]
